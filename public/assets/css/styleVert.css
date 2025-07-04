@@ -1,0 +1,30 @@
+
+/* Estilos de Impressão Personalizados */
+@media  print {
+    @page {
+        size: portrand; /* Define a orientação da página como paisagemn */
+    }
+    /* Oculta elementos não essenciais */
+    .d-print-none {
+        display: none !important;
+    }
+    body {
+        transform: scale(1.0);
+        transform-origin: top left;
+      }
+    
+      @page {
+        size: auto;
+        margin: 05mm; /* Ajuste conforme necessário */
+      }
+    /* Estiliza tabelas para impressão */
+    table {
+        border-collapse: collapse;
+
+    }
+    th,td {
+        border: 1px solid ;
+        padding: 2px;
+        height: 5px;
+    }
+}

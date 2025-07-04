@@ -1,0 +1,26 @@
+
+/* Estilos de Impressão Personalizados */
+@media print{
+    @page {
+        size: landscape; /* Define a orientação da página como paisagemn */
+    }
+    /* Oculta elementos não essenciais */
+    .d-print-none {
+        display: none !important;
+    }
+    /* Ajusta o layout para impressão */
+    .container {
+        width: 120%;
+        margin: auto;
+    }
+    /* Estiliza tabelas para impressão */
+    table {
+        border-collapse: collapse;
+
+    }
+    th,td {
+        border: 1px solid ;
+        padding: 2px;
+        height: 5px;
+    }
+}
