@@ -11,4 +11,6 @@ $routes->get('Logout', 'Home::logout');
 $routes->get('Dashboard', 'Dashboard::index');
 $routes->get('Admin', 'Admin::index');
 $routes->get('Admin/users', 'Admin::users');
+$routes->get('EsqueciSenha', 'Home::lembraSenha');
+$routes->post('recuperaSenha', 'Home::recuperaSenha');
 

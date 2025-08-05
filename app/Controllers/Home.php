@@ -69,7 +69,68 @@ class Home extends BaseController
         // Se não há dados POST, redirecionar para página inicial
         return redirect()->to(base_url());
     }
+ // função para recuperar senha 
+    public function lembraSenha()
+    {
+        helper('form');
+        echo view('_common/header'),
+        view('lembraSenha'),
+        view('_common/footer');
+    }
+    /**
+     * envia um e-mail com a nova senha
+     */
+    public function recuperaSenha()
+    {
+        $email = \Config\Services::email();
+        $request = \Config\Services::request();
+        $validation = \Config\Services::validation();
+        $session = \Config\Services::session();
+        if ($post = $request->getPost()) {
+            //dd($post);
+            $val = $this->validate(
+                [
+                    'email' => 'required|valid_email',
+                ]
+            );
+            //Se não passar na validação retorna para a página anterio (back) com os erros.
+            if (!$val) {
+                helper('[old]');
+                session()->setFlashdata('mensagem', 'preencha o campo email');
 
+                return redirect()->back()->withInput();
+            }
+            if ($emailUser = $this->administrador->login($post['email'])) {
+                $senha = rand(100000, 990000);
+                $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+                $user = [
+                    'id' => $emailUser['id'],
+                    'password' => $senhaHash,
+                ];;
+                if ($this->administrador->save($user)) {
+                    $msg = view('mensagemSenha', [
+                        'senha' => $senha,
+                        'nome' => $emailUser['nome'],
+                    ]);
+                    //dd($msg);
+                    $email->setFrom('atendimento@larpegumercindo.com.br');
+                    $email->setTo($emailUser['email']);
+                    $email->setBCC('clovis.sardinha@gmail.com');
+                    $email->setSubject("Recuperação de senha do Lar Padre Gumercindo");
+                    $email->setMessage($msg);
+                    if ($email->send()) {
+                        session()->setFlashdata('mensagem', 'Mensagem enviada com sucesso!');
+                        return redirect()->to(base_url());
+                    }
+                } else {
+                    session()->setFlashdata('mensagem', 'dados incorretos');
+                    return redirect()->to(base_url());
+                }
+            }
+        } else {
+            return redirect()->back()->with('mensagem', 'email não encontrado. Solicite cadastramento');
+        }
+    }
     public function logout()
     {
         return $this->doLogout();
