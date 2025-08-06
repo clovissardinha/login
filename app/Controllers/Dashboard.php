@@ -12,7 +12,9 @@ class Dashboard extends BaseController
             'usuario' => $user,
             'titulo' => 'Dashboard'
         ];
-        
-        return view('dashboard', $data);
+        return view('_common/header',$data)
+            . view('_common/lateral')
+            . view('dashboard',$data)
+            . view('_common/footer');
     }
 }

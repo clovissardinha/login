@@ -7,8 +7,14 @@ class Admin extends BaseController
     {
         // Automaticamente protegido
         $user = $this->getLoggedUser();
-        
-        return view('admin/index', ['usuario' => $user]);
+        $data = [
+            'usuario' => $user,
+            'titulo' => 'Dashboard'
+        ];
+       return view('_common/header',$data)
+            . view('_common/lateral')
+            . view('admin/index',$data)
+            . view('_common/footer');
     }
 
     public function users()
