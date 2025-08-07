@@ -1,3 +1,4 @@
+            <li class="list-unstyled text-end">desenvolvido por: clovis sardinha -2025</li>
             </div> <!-- Fechando a row -->
             </div> <!-- Fechando container -->
             </main>

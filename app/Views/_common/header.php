@@ -8,10 +8,13 @@
 </head>
 <body>
   <main>
-    <div class="container">
-      <div class="col-md-12 text-center ">
-        <h1 class=" bg-primary text-white"><img class="m-auto " src="<?php echo base_url('/imagens/Sispeq_ Logo.png') ?>" alt="logo" width="60%" ></h1>
-        <p>Você está logado como: <?= $usuario['nome'] ?> ID:<?= $usuario['id'] ?></p>
+    <div class="container-float">
+      <div class="col-md-12 text-center mt-1 ">
+        <h1 class=" bg-secondary text-white"><img  src="<?php echo base_url('/imagens/Sispeq_ Logo.png') ?>" alt="logo" width="60%" ></h1>
+        <p class="text-primary">Você está logado como: <?= $usuario['nome'] ?> ID:<?= $usuario['id'] ?></p>
+      </div>
+      <div>
+        
       </div>
 
       <!-- Abrimos a linha AQUI -->
