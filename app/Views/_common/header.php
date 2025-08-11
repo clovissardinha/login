@@ -10,8 +10,10 @@
   <main>
     <div class="container-float">
       <div class="col-md-12 text-center mt-1 ">
-        <h1 class=" bg-secondary text-white"><img  src="<?php echo base_url('/imagens/Sispeq_ Logo.png') ?>" alt="logo" width="60%" ></h1>
+        <h1 class=" bg-light text-white"><img  src="<?php echo base_url('/imagens/Sispeq_ Logo.png') ?>" alt="logo" width="60%" ></h1>
+        <?php if(isset($usuario)):?>
         <p class="text-primary">Você está logado como: <?= $usuario['nome'] ?> ID:<?= $usuario['id'] ?></p>
+        <?php endif ?>
       </div>
       <div>
         

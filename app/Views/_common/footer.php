@@ -1,4 +1,4 @@
-            <li class="list-unstyled text-end">desenvolvido por: clovis sardinha -2025</li>
+            <span class="list-unstyled text-end fix-base ">desenvolvido por: clovis sardinha -2025</span>
             </div> <!-- Fechando a row -->
             </div> <!-- Fechando container -->
             </main>
